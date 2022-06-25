@@ -1,8 +1,12 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
+  - id: image
+    name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}', '.']
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  - id: cloud-run
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: ['run', 'deploy', 'dgc-hackathon-backend', '--image', 'gcr.io/$PROJECT_ID/${_IMAGE}', '--region', '${_LOCATION}']
+    waitFor:
+    - image
 images:
   - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}'
