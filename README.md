@@ -30,4 +30,4 @@ npm run start:dev
 ```
 à chaque changement que vous faites dans votre code, l'application va se relancer en prenant en compte les changements.
 
-Sur un browser ou POSTMAN / cURL, vous pouvez tester votre applicationcen tapant sur https://localhost:8400/example
+Sur un browser ou POSTMAN / cURL, vous pouvez tester votre application en tapant sur https://localhost:8400/example
